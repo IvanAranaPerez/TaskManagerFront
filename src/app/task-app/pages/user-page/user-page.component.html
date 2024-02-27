@@ -1,0 +1,33 @@
+<h2>Usuarios</h2>
+<hr>
+
+<div class="p-2 m-2">
+  <label for="inputPassword5" class="form-label">Usuario</label>
+  <input type="text" id="inputPassword5" class="form-control"  [(ngModel)]="newUserName">
+  <label for="inputPassword5" class="form-label">Foto de perfil (URL)</label>
+  <input type="text" id="inputPassword5" class="form-control"  [(ngModel)]="newProfilePic">
+  <button class="btn btn-primary mt-2" (click)="createUser()">Agregar usuario</button>
+</div>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">_id</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <th scope="row">{{ user._id }}</th>
+      <td>{{ user.name }}</td>
+      <td>
+        <button class="btn btn-primary m-2" (click)="user._id && getUser(user._id, 'userTasks')">Ver tareas</button>
+        <button class="btn btn-info m-2" (click)="user._id && getUser(user._id, 'userUpdate')">Editar</button>
+
+        <button *ngIf="user && user._id" class="btn btn-danger m-2" (click)="deleteUser(user._id)">Borrar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

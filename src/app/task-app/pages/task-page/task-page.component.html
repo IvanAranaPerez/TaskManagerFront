@@ -1,0 +1,30 @@
+<h2>Tareas</h2>
+<hr>
+
+<div class="container">
+
+  <div class="row">
+    <div class="p-2 m-2">
+      <label for="inputTask" class="form-label">Nueva tarea</label>
+      <input type="text" id="inputTask" class="form-control">
+      <label for="selectUser" class="form-label">Seleccionar usuario</label>
+      <select id="selectUser" class="form-select" (change)="onUserSelect($event)">
+        <option >--Usuarios--</option>
+        <option *ngFor="let user of users" [value]="user._id">{{user.name}}</option>
+      </select>
+      <button class="btn btn-primary mt-2" (click)="createNewUserTask()">Agregar tarea</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div *ngFor="let task of tasks" class="card mt-4 m-2" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{task.task}}</h5>
+        <p style="font-size: small;">Usuario: {{task.userId}}</p>
+        <!-- <button href="#" class="btn btn-primary p-2 m-2">Ver detalles</button> -->
+        <button href="#" class="btn btn-danger p-2 m-2" *ngIf="task && task._id" (click)="deleteTaskById(task._id)">Borrar tarea</button>
+      </div>
+    </div>
+  </div>
+
+</div>

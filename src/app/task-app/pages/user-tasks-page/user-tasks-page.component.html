@@ -1,0 +1,42 @@
+<h2>Tareas de: {{user.name}} </h2>
+<hr>
+
+<div class="container">
+
+  <div class="row" style="background: rgba(113, 255, 0, 0.19); border-radius: 16px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); backdrop-filter: blur(10.1px); -webkit-backdrop-filter: blur(10.1px); border: 1px solid rgba(113, 255, 0, 0.36);">
+
+    <div class="col-lg-3">
+      <img class="m-2" *ngIf="user.pic; else defaultImage" [src]="user.pic" style="width: 200px;" alt="Foto Perfil">
+    </div>
+
+    <div class="col-lg-9">
+      <form>
+        <div class="m-2 p-3">
+          <label type="text" class="m-2" ><strong>ID: </strong></label>
+          <label type="text" >{{user._id}}</label>
+        </div>
+        <div class="m-2 p-3">
+          <label type="text" class="m-2" style="font-size: 50px;"><strong>{{user.name}}</strong></label>
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div *ngFor="let task of tasks" class="card mt-4 m-2" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{task.task}}</h5>
+        <button class="btn btn-info p-2 m-2" (click)="task._id &&  getUserTask(task._id)">Editar</button>
+        <button class="btn btn-danger p-2 m-2" *ngIf="task && task._id" (click)="deleteTaskById(task._id)">Borrar</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<ng-template #defaultImage>
+  <img src="https://i0.wp.com/digitalhealthskills.com/wp-content/uploads/2022/11/3da39-no-user-image-icon-27.png?fit=500%2C500&ssl=1" style="width: 200px;" alt="Foto de perfil por defecto">
+</ng-template>
+

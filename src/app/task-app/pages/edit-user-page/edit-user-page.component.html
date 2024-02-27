@@ -1,0 +1,27 @@
+<h2>Editar Usuario</h2>
+<hr>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <img *ngIf="user.pic; else defaultImage" [src]="user.pic" style="width: 200px;" alt="Foto Perfil">
+    </div>
+    <div class="col-lg-9">
+      <form>
+        <div class="mb-3">
+          <label for="usuario" class="form-label">Usuario</label>
+          <input type="text" class="form-control" id="usuario" [(ngModel)]="user.name" name="name">
+        </div>
+        <div class="mb-3">
+          <label for="foto-perfil" class="form-label">Foto de perfil (URL)</label>
+          <input type="text" class="form-control" id="foto-perfil" [(ngModel)]="user.pic" name="pic">
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="updateUser()">Guardar cambios</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<ng-template #defaultImage>
+  <img src="https://i0.wp.com/digitalhealthskills.com/wp-content/uploads/2022/11/3da39-no-user-image-icon-27.png?fit=500%2C500&ssl=1" style="width: 200px;" alt="Foto de perfil por defecto">
+</ng-template>
